@@ -1,6 +1,7 @@
 let altura = 0
 let largura = 0
 let vidas = 1
+let tempo = 15
 
 function ajustaTamanhoPalcoJogo() {
     altura = window.innerHeight
@@ -10,13 +11,26 @@ function ajustaTamanhoPalcoJogo() {
 
 ajustaTamanhoPalcoJogo()
 
+let cronometro = setInterval(function(){
+    
+    tempo -= 1
+
+    if(tempo < 0){
+        clearInterval(cronometro)
+        clearInterval(criarMosquito)
+        alert('Você venceu!')
+    }else{
+        document.getElementById('cronometro').innerHTML = tempo
+    }
+}, 1000)
+
 function posicaoRandomica() {
     
     if(document.getElementById('mosquito')) {  // remoção do mosquito anterior
         document.getElementById('mosquito').remove()
 
         if(vidas > 3) {
-            alert('Interromper o jogo (Game Over)')
+            window.location.href = 'fim_de_jogo.html'
         } else {
 
             document.getElementById('v' + vidas).src = "imagens/coracao_vazio.png"

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="styles.css"/>
-        <title></title>
+        <title>Game Mata Mosquito</title>
 
         <script src="jogo.js"></script>
     </head>
@@ -16,11 +16,13 @@
                 <img id="v3" src="imagens/coracao_cheio.png" />
             </divi>
 
-            <div class="cronometro">Tempo restante: ?</div>
+            <div class="cronometro">Tempo restante: <span id="cronometro"></span></div>
         </div>
         
         <script>
-            setInterval(function() {
+            document.getElementById('cronometro').innerHTML = tempo
+
+            let criarMosquito = setInterval(function() {
                 posicaoRandomica()
             }, 2000)
         </script>
